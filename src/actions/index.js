@@ -1,11 +1,10 @@
 import axios from 'axios';
 import gamesData from '../api/games';
 
-
 import { FETCH_USERS } from './type';
 import { FETCH_CAT } from './type';
 import { ACTIVE_CAT } from './type';
-
+import { ACTIVE_GAME } from './type';
 
 // action creator care craeza o actiune (obiect) cu type si data
 //https://jsonplaceholder.typicode.com/users
@@ -34,4 +33,10 @@ export function activeCat(a = null){
     }
 }
 
+export function activeGame(game){
+    return {
+        type: ACTIVE_GAME,
+        payload: game
+    }
+}
 

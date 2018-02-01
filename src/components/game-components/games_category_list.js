@@ -36,7 +36,7 @@ class GamesCategoryList extends Component {
         )
     }
     render(){
-            if(this.props.categories ){
+            if( this.props.categories ){
                 return (
                 <nav className = 'GamesCategoryNav' >
                     <ul className = 'GamesCategoryList'>
@@ -45,8 +45,7 @@ class GamesCategoryList extends Component {
                 </nav>
                 )
             }
-            return <div >
-                no data loading... </div>
+            return <div> no data loading... </div>
     }
 
 }
