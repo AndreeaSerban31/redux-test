@@ -5,12 +5,8 @@ import { connect } from 'react-redux';
 class GameDetail extends Component {
     render() {
         if ( this.props.activeGame ) {
-            const STYLE = {
-                backgroundURL: { background: "url("+ this.props.activeGame.game.backgroundImage + ")" }
-            };
             return (
-                <div className="GameThumbnailDetail" /*style={ STYLE.backgroundURL }*/>
-                    <h3> { console.log( this.props.activeGame.game ) } </h3>
+                <div className="GameThumbnailDetail">
                     <img className="GameThumbnailDetailImg"
                          width= '50'
                          height='50'
