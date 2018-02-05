@@ -53,11 +53,12 @@ class GamesCatChildrenGrid extends Component {
                     this.props.categories[this.props.categories.length - 1].children.map((item) => {
                         return (
                             <div calssName="GameWrapper" >
-                                <a className="GameThumbnail"
+                                <div className="GameThumbnail"
                                      key= { item.id }
                                      href="#"
                                      onClick={(e) => this.handleClick(e, item) }
                                 >
+                                    <span className="GameVendor">{ item.game.vendor }</span>
                                     <div >
                                         <img className="GameImage"
                                              width="200"
@@ -69,7 +70,7 @@ class GamesCatChildrenGrid extends Component {
                                     </span>
                                     </div>
                                     { this.state.itemId === item.id ? <GameDetail /> : null }
-                                </a>
+                                </div>
                             </div>
                         );
                     }) }

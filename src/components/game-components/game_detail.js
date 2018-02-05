@@ -14,6 +14,11 @@ class GameDetail extends Component {
         );
     }
 
+    handleHrefOnClick(e) {
+        e.preventDefault();
+        window.open(this.props.activeGame.game.url, '_blank')
+    }
+
     renderCloseButton(){
         return(
             <button className="CloseButton" onClick= {() => this.handleClose()}>&times;</button>
@@ -23,14 +28,28 @@ class GameDetail extends Component {
         return(
             <div className="GameThumbnailDetail">
                 <img className="GameThumbnailDetailImg"
-                     width= '100'
-                     height='100'
+                     width= '150'
+                     height='150'
                      src = { this.props.activeGame.game.thumbnail }
                 />
-                <h3 className="GameThumbnailDetailName">
-                    { this.props.activeGame.game.name }
-                </h3>
+                <div className="ActionWrapper">
+                    <button className="Button PlayForFun"
+                       title= { 'Play ' + this.props.activeGame.game.name + ' for fun' }
+                       onClick = { (e) => { this.handleHrefOnClick(e) } }
+                    >
+                       PLAY FOR FUN
+                    </button>
+                    <button className="Button PlayForReal"
+                       title={ 'Play ' + this.props.activeGame.game.name + ' for real'}
+                        /*TO DO: redirect to register*/
+                    >
+                        PLAY FOR REAL
+                    </button>
+                </div>
                 <div className="GameThumbnailDetailDescription">
+                    <h3 className="GameThumbnailDetailName">
+                        { this.props.activeGame.game.name }
+                    </h3>
                     <p> Small description: </p>
                     <p className="GameThumbnailDetailDescription">
                         { this.props.activeGame.game.description }
@@ -41,6 +60,7 @@ class GameDetail extends Component {
     }
 
     render() {
+        console.log( this.props.activeGame );
         if ( this.props.activeGame && this.state.closeItem === null ) {
                return(
                        <div className="GameDetailWrapper">
