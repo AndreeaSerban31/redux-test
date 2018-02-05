@@ -6,10 +6,9 @@ import { activeGame } from '../../actions/index';
 import GameDetail from './game_detail';
 
 class GamesCatChildrenGrid extends Component {
-
     constructor(props){
         super(props);
-
+        this.state = { itemId: null };
     }
 
     renderAllCatTitle( ){
@@ -37,51 +36,43 @@ class GamesCatChildrenGrid extends Component {
         )
     }
 
-    handleClick(){
-       return this
-    }
-
-    showGameHoverState(){
-        console.log( this.handleClick().props.activeGame(this) );
-        if(this.handleClick === 'fd' ){
-            return (
-                <div className="test"> djf </div>
-            );
+    handleClick(e, item){
+        e.preventDefault();
+        this.setState(
+            { itemId: item.id }
+        );
+        if(typeof this.props.activeGame === 'function'){
+            this.props.activeGame(item) ;
         }
-        return (
-            <div className="test"> djf </div>
-        )
-
     }
+
     randerAllGameThumbnails(){
         return (
             <div>
                 {
-                this.props.categories[this.props.categories.length - 1].children.map((item, index) => {
-                    return (
-                        <div calssName="GameWrapper" >
-                            <div className="GameThumbnail"
-                                 key={ index }
-                                 onClick={ () => { this.props.activeGame(item); this.handleClick() }}
-                            >
-                                <div >
-                                    <img className="GameImage"
-                                         width="200"
-                                         height="200"
-                                         src={ item.game.thumbnail }
-                                    />
-                                <span
-                                    className="GameName">
-                                    { item.game.name }
-                                </span>
-                                </div>
+                    this.props.categories[this.props.categories.length - 1].children.map((item) => {
+                        return (
+                            <div calssName="GameWrapper" >
+                                <a className="GameThumbnail"
+                                     key= { item.id }
+                                     href="#"
+                                     onClick={(e) => this.handleClick(e, item) }
+                                >
+                                    <div >
+                                        <img className="GameImage"
+                                             width="200"
+                                             height="200"
+                                             src={ item.game.thumbnail }
+                                        />
+                                    <span className="GameName">
+                                        { item.game.name }
+                                    </span>
+                                    </div>
+                                    { this.state.itemId === item.id ? <GameDetail /> : null }
+                                </a>
                             </div>
-                            <div>{ this.showGameHoverState(item) }</div>
-                        </div>
-                    )
-                })
-                }
-
+                        );
+                    }) }
            </div>
         )
     }
@@ -94,7 +85,7 @@ class GamesCatChildrenGrid extends Component {
                         return (
                             <div className="GameThumbnail"
                                  key={ item.id }
-                                 onClick={ () => {  this.props.activeGame(item) }}
+                                 onClick={(e) => this.handleClick(e, item)}
                                  onMouseOver={ () => { }}
                             >
                                 <div >
@@ -103,8 +94,11 @@ class GamesCatChildrenGrid extends Component {
                                          height="200"
                                          src={ item.game.thumbnail }
                                     />
-                                    <span className="GameName">{ item.game.name }</span>
+                                    <span className="GameName">
+                                        { item.game.name }
+                                    </span>
                                 </div>
+                                { this.state.itemId === item.id ? <GameDetail /> : null }
                             </div>
                         );
                     //live casino games
@@ -112,7 +106,7 @@ class GamesCatChildrenGrid extends Component {
                         return (
                             <div className="GameThumbnail"
                                  key={ item.id }
-                                 onClick={ () => {  this.props.activeGame(item) }}
+                                 onClick={ () => this.props.activeGame(item)}
                                  onMouseOver={ () => { }}
                             >
                                 <div >
@@ -155,7 +149,7 @@ class GamesCatChildrenGrid extends Component {
 function mapStateToProps(state){
     return {
         test2: state.activeCat,
-        categories: state.categories,
+        categories: state.categories
     }
 }
 
