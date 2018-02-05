@@ -25,6 +25,9 @@ class GameDetail extends Component {
         )
     }
     renderGameDetail(){
+        let STYLE = {
+            background: 'url(' + this.props.activeGame.game.backgroundImage + ' ) center center/ 100% 100% no-repeat '
+        };
         return(
             <div className="GameThumbnailDetail">
                 <img className="GameThumbnailDetailImg"
@@ -32,7 +35,7 @@ class GameDetail extends Component {
                      height='150'
                      src = { this.props.activeGame.game.thumbnail }
                 />
-                <div className="ActionWrapper">
+                <div className="ActionWrapper" style={ STYLE }>
                     <button className="Button PlayForFun"
                        title= { 'Play ' + this.props.activeGame.game.name + ' for fun' }
                        onClick = { (e) => { this.handleHrefOnClick(e) } }

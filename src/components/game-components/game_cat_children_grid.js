@@ -46,6 +46,23 @@ class GamesCatChildrenGrid extends Component {
         }
     }
 
+    randerNewGame(item){
+        if(item.game.newGame === false){
+            return ( null )
+        }
+        return (
+            <span className="NEW"> NEW </span>
+        )
+    }
+
+    randerPopularity(item){
+        let gamePopularity = [];
+        gamePopularity.push(item.game.popularity);
+        console.log( gamePopularity );
+        let max = Math.max(...gamePopularity);
+        let min = Math.min(...gamePopularity);
+        console.log( max, min );
+    }
     randerAllGameThumbnails(){
         return (
             <div>
@@ -58,8 +75,11 @@ class GamesCatChildrenGrid extends Component {
                                      href="#"
                                      onClick={(e) => this.handleClick(e, item) }
                                 >
-                                    <span className="GameVendor">{ item.game.vendor }</span>
+                                    <span className="GameVendor">
+                                        { item.game.vendor }
+                                    </span>
                                     <div >
+                                        { this.randerPopularity(item) }
                                         <img className="GameImage"
                                              width="200"
                                              height="200"
@@ -68,6 +88,7 @@ class GamesCatChildrenGrid extends Component {
                                     <span className="GameName">
                                         { item.game.name }
                                     </span>
+                                    { this.randerNewGame(item) }
                                     </div>
                                     { this.state.itemId === item.id ? <GameDetail /> : null }
                                 </div>
@@ -84,22 +105,28 @@ class GamesCatChildrenGrid extends Component {
                     //casino games
                     case 'game' :
                         return (
-                            <div className="GameThumbnail"
-                                 key={ item.id }
-                                 onClick={(e) => this.handleClick(e, item)}
-                                 onMouseOver={ () => { }}
-                            >
-                                <div >
-                                    <img className="GameImage"
-                                         width="200"
-                                         height="200"
-                                         src={ item.game.thumbnail }
-                                    />
-                                    <span className="GameName">
-                                        { item.game.name }
-                                    </span>
+                            <div calssName="GameWrapper" >
+                                <div className="GameThumbnail"
+                                     key={ item.id }
+                                     onClick={(e) => this.handleClick(e, item)}
+                                     onMouseOver={ () => { }}
+                                >
+                                        <span className="GameVendor">
+                                            { item.game.vendor }
+                                        </span>
+                                        <div >
+                                            <img className="GameImage"
+                                                 width="200"
+                                                 height="200"
+                                                 src={ item.game.thumbnail }
+                                            />
+                                        <span className="GameName">
+                                            { item.game.name }
+                                        </span>
+                                            { this.randerNewGame(item) }
+                                        </div>
+                                        { this.state.itemId === item.id ? <GameDetail /> : null }
                                 </div>
-                                { this.state.itemId === item.id ? <GameDetail /> : null }
                             </div>
                         );
                     //live casino games
