@@ -2,13 +2,17 @@ import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 
-import { activeGame } from '../../actions/index';
+import { activeGame } from '../../../actions/index';
 import GameDetail from './game_detail';
 
 class GamesCatChildrenGrid extends Component {
     constructor(props){
         super(props);
-        this.state = { itemId: null };
+        this.state = {
+            itemId: null,
+            gamePopularity: []
+        };
+
     }
 
     renderAllCatTitle( ){
@@ -56,12 +60,27 @@ class GamesCatChildrenGrid extends Component {
     }
 
     randerPopularity(item){
-        let gamePopularity = [];
-        gamePopularity.push(item.game.popularity);
-        console.log( gamePopularity );
-        let max = Math.max(...gamePopularity);
-        let min = Math.min(...gamePopularity);
-        console.log( max, min );
+        if( Object.prototype.toString.call(this.state.gamePopularity) === '[object Array]' ) {
+            this.state.gamePopularity.push(item.game.popularity);
+            let max = Math.max(...this.state.gamePopularity);
+            let startsWidth = (item.game.popularity * 20 / max).toFixed(2);
+
+            let STYLE;
+            ( startsWidth <= 1 ) ? STYLE = { width: 200 } : STYLE = { width: 200 - startsWidth * 5};
+
+            return (
+                <div className='StarsBox'>
+                    <div className='StarOverlay' style= { STYLE }></div>
+                    <div className='StarWrapper'  >
+                        <span className='StarItem'> &#9733; </span>
+                        <span className='StarItem'> &#9733; </span>
+                        <span className='StarItem'> &#9733; </span>
+                        <span className='StarItem'> &#9733; </span>
+                        <span className='StarItem'> &#9733; </span>
+                    </div>
+                </div>
+            )
+        }
     }
     randerAllGameThumbnails(){
         return (
@@ -79,19 +98,19 @@ class GamesCatChildrenGrid extends Component {
                                         { item.game.vendor }
                                     </span>
                                     <div >
-                                        { this.randerPopularity(item) }
                                         <img className="GameImage"
                                              width="200"
                                              height="200"
                                              src={ item.game.thumbnail }
                                         />
-                                    <span className="GameName">
-                                        { item.game.name }
-                                    </span>
+                                    { this.randerPopularity(item) }
+                                    <span className="GameName">{ item.game.name }</span>
                                     { this.randerNewGame(item) }
                                     </div>
+
                                     { this.state.itemId === item.id ? <GameDetail /> : null }
                                 </div>
+
                             </div>
                         );
                     }) }

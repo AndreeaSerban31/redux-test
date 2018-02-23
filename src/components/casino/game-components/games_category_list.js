@@ -2,8 +2,8 @@ import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 
-import * as actionsCreators from '../../actions';
-import { fetchCat, activeCat } from '../../actions/index';
+import * as actionsCreators from '../../../actions';
+import { fetchCat, activeCat } from '../../../actions/index';
 
 class GamesCategoryList extends Component {
     componentWillMount() {

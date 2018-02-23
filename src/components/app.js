@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import UserList from './user-components/user_list';
-import GamesCategoryList from './game-components/games_category_list';
-import GamesCatChildrenGrid from './game-components/game_cat_children_grid';
+import UserList from './register/user-components/user_list';
 
-import { Router, Route } from 'react-router'
+import Layout from './layout/layout';
+import Casino from './casino/game-components/index';
 
 // implemented <UserList />
 export default class App extends Component {
   render() {
     return (
-      <div className="Block">
-            <GamesCategoryList />
-            <GamesCatChildrenGrid />
-      </div>
+        <Layout>
+            { this.props.children }
+        </Layout>
     );
   }
-}
+};
 
