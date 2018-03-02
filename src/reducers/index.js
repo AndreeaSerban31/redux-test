@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import UserReducer from './user_reducer';
+import AuthReducer from './auth_reducer';
 
 import CategoryReducer from './cat_reducer';
 import ActiveCat from './active_cat_reducer';
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     users: UserReducer,
     categories: CategoryReducer,
     activeCat: ActiveCat,
-    activeGame: ActiveGame
+    activeGame: ActiveGame,
+    auth: AuthReducer
 });
 
 export default rootReducer;

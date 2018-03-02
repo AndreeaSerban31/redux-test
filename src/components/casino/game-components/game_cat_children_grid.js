@@ -107,7 +107,6 @@ class GamesCatChildrenGrid extends Component {
                                     <span className="GameName">{ item.game.name }</span>
                                     { this.randerNewGame(item) }
                                     </div>
-
                                     { this.state.itemId === item.id ? <GameDetail /> : null }
                                 </div>
 

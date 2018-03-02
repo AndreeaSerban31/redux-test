@@ -10,13 +10,10 @@ class Footer extends Component {
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/Casino">Casino</Link>
+                        <Link to="/TermsAndConditions">Terms and conditions</Link>
                     </li>
                     <li>
-                        <Link to="/Register">Register</Link>
-                    </li>
-                    <li>
-                        { this.logInButton }
+                        <Link to="/About us">About us</Link>
                     </li>
                 </ul>
             </footer>

@@ -63,7 +63,6 @@ class GameDetail extends Component {
     }
 
     render() {
-        console.log( this.props.activeGame );
         if ( this.props.activeGame && this.state.closeItem === null ) {
                return(
                        <div className="GameDetailWrapper">

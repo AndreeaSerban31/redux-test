@@ -89,3 +89,13 @@ html { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
     .StarWrapper { width: 100%; overflow: hidden; }
         .StarOverlay { position: absolute; top: 0; right: 0; height: 30px; background: #ffffffad;}
             .StarItem { display: inline-block; width: 20px; font-size: 24px; color: orangered; }
+
+
+/*log in*/
+.LogInWrapperModal { position: relative; }
+.Close { position: absolute; width: 4em; height: 2em; margin: 1em; background: red; color: white; border: none;z-index: 999; right: 0; }
+.LogInWrapper { position: fixed; width: 100vw; height: 100vh; background: rgba(255,255,255,.8); z-index: 99; }
+    .LogInForm { width: 200px; margin: 8em auto;  background: #112931; padding: 4em; }
+        .LogInForm label { color: white; line-height: 1.5; }
+        .LogInForm input { padding: .5em 1em;  }
+            .LogIn { margin: 1em 0; float: left; padding: .5em 2em; }
