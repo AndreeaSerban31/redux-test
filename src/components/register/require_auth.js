@@ -9,20 +9,18 @@ export default function( ComposedComponent ) {
             router: React.PropTypes.object
         };
         componentWillMount(){
-            this.props.authCreator;
-            console.log( this.props );
-            if(!this.props.auth){
+            console.log(this.props);
+            if(!this.props.authCreator){
                 this.context.router.push('/')
             }
         }
         render(){
-            console.log(this.context);
             return <ComposedComponent { ...this.props } />
         }
     }
 
     function mapStateToProps(state){
-        return { authCreator: state }
+        return { authCreator: state.auth }
     }
 
     return connect(mapStateToProps)(Authentication);

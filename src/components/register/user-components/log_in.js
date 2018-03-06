@@ -1,4 +1,5 @@
 import React,{ Component } from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
 import * as actions from '../../../actions';
@@ -7,15 +8,21 @@ import { bindActionCreators } from 'redux';
 
 import { auth } from '../../../actions/index';
 import { fetchUser } from '../../../actions/index';
+import UserList from './user_list';
 
 class LogIn extends Component {
     constructor(props){
         super(props);
-        this.state = { username:'', password:'' };
+        this.state = { username: '', password: '' };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
     }
+    static contextTypes = {
+        router: React.PropTypes.object,
+        location: React.PropTypes.object
+    };
     componentWillMount(){
         this.props.actions.fetchUser();
         this.props.actions.authCreator();
@@ -30,16 +37,19 @@ class LogIn extends Component {
         this.props.users.map((user) => {
             // light login need server validation and more validations on front end
             if((user.username === this.state.username) && ( user.id.toString() === this.state.password.toString())){
-                sessionStorage.setItem('AUTHENTICATED', 'true');
+                sessionStorage.setItem('AUTHENTICATED', true );
                 AUTHENTICATED.push(user);
             }
         });
         this.props.actions.authCreator(sessionStorage.getItem('AUTHENTICATED'));
+        /*let currentURL = this.context.location.pathname;*/
+        /*this.context.router.go(currentURL);*/
         return AUTHENTICATED;
     }
+
     render(){
         return(
-            <div className="LogInWrapper" >
+            <div className="LogInWrapper">
                 <div className="LogInForm">
                     <form autoComplete="on" >
                         <div className="UserNameWrap">
@@ -56,7 +66,6 @@ class LogIn extends Component {
             </div>
         )
     }
-
 }
 
 function mapStateToProps(state){

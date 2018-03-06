@@ -46,7 +46,6 @@ class Header extends Component {
             <button className="Close" type="button" name="close" value="" onClick = { () => { this.handleClose() }}>Close</button>
         )
     }
-
     logInTrigger(){
             if(this.state.logInClick){
                 return (
@@ -76,6 +75,9 @@ class Header extends Component {
                     <ul>
                         <li>
                             <Link to="/Profile">Profile</Link>
+                        </li>
+                        <li>
+                            <Link to="/Register">Register</Link>
                         </li>
                         <li>
                             { this.logIn() }

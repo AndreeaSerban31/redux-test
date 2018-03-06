@@ -8,9 +8,12 @@ import reducers from './reducers';
 import Async from './middleware/async';
 import { Link, Router, Route, browserHistory, IndexRoute, hashHistory } from 'react-router';
 
-import requireAuth from "./components/register/require_auth"
+import requireAuth from "./components/register/require_auth";
 import Layout from './components/layout/layout';
 import UserList from './components/register/user-components/user_list';
+import Register from './components/register/register-components/register';
+import ConnectToFirebase from './middleware/firebase-connect';
+
 import LogIn from './components/register/user-components/log_in';
 import Casino from './components/casino/game-components/index';
 
@@ -22,6 +25,7 @@ ReactDOM.render(
               <Route path = '/' component = { App } >
                   <IndexRoute component = { Casino } />
                   <Route path='/Casino' component = { Casino }> </Route>
+                  <Route path='/Register' component = { ConnectToFirebase }> </Route>
                   <Route path='/Profile' component = { requireAuth(UserList) }> </Route>
               </Route>
           </Router>
