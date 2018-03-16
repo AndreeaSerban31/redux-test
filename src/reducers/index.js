@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import UserReducer from './user_reducer';
+import CountryReducer from './country_reducer';
 import AuthReducer from './auth_reducer';
 
 import CategoryReducer from './cat_reducer';
@@ -10,6 +11,7 @@ import ActiveGame from './active_game_reducer';
 //wire up reducer to use in view(react)
 const rootReducer = combineReducers({
     users: UserReducer,
+    country: CountryReducer,
     categories: CategoryReducer,
     activeCat: ActiveCat,
     activeGame: ActiveGame,

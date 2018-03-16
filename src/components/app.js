@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import UserList from './register/user-components/user_list';
 
 import Layout from './layout/layout';
 import Casino from './casino/game-components/index';

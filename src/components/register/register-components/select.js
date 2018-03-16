@@ -1,15 +1,17 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 
-class InputText extends Component {
+class Select extends Component {
     propTypes: {
         name: React.PropTypes.string.isRequired,
         label: React.PropTypes.string.isRequired,
         onChange: React.PropTypes.func.isRequired,
-        placeholder: React.PropTypes.string,
+        options: React.PropTypes.func.isRequired,
         value: React.PropTypes.string,
-        error: React.PropTypes.string
-    };
+        error: React.PropTypes.string,
+        select: React.PropTypes.string,
+        selectText: React.PropTypes.string
+        };
 
     render(){
         var wrapperClass = 'form-group';
@@ -21,15 +23,14 @@ class InputText extends Component {
             <div className={wrapperClass}>
                 <lable htmlFor={ this.props.name }>{ this.props.label }</lable>
                 <div className="field">
-                    <input type='text'
-                           name={ this.props.name }
-                           className="form-control"
-                           placeholder={ this.props.placeholder }
-                           ref={ this.props.name }
-                           value={ this.props.value }
-                           onChange={ this.props.onChange }
-                    />
-                    <div className="input">{ this.props.error }</div>
+                    <select
+                        name = { this.props.name }
+                        onChange = { this.props.onChange }
+                    >
+                        <option value={ this.props.select }>{ this.props.selectText }</option>
+                        { this.props.options }
+                    </select>
+                    <div className="Error">{ this.props.error }</div>
                 </div>
             </div>
 
@@ -37,4 +38,4 @@ class InputText extends Component {
     }
 }
 
-export default InputText;
+export default Select;

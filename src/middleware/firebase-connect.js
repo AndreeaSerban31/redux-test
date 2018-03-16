@@ -8,11 +8,10 @@ import ReactFireMixin from 'reactfire';
 import reactMixin from 'react-mixin';
 
 
-// https://github.com/mjackson/ReactFire
-//() => { this.firebaseRefs.items }
 class ConnectToFirebase extends Component {
     componentWillMount () {
         try {
+            //https://stackoverflow.com/questions/38877539/reading-data-from-firebase-3-into-a-react-component-with-es6-syntax
             let firebaseConnect = new Firebase('https://redux-test-1b77a.firebaseio.com/users/');
             this.bindAsObject(firebaseConnect, 'users');
             // Attach an asynchronous callback to read the data at our  reference
@@ -24,7 +23,7 @@ class ConnectToFirebase extends Component {
             });
         }
         catch(error){
-            console.log( error)
+            console.log( error )
         }
     }
     render(){

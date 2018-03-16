@@ -47,7 +47,7 @@ table {
 a,a:focus, a:hover,a:active,a:visited { color: #0b97c4; text-decoration: none; }
 
 html { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-
+select { width: 173px; padding: .2em 0; }
 .Button { display: block; padding: 5px 20px; background: #ff5722; border: none; box-shadow: none; color: #fff; outline: none; border-radius: 3px;  }
 .Button:hover,.Button:focus,.Button:visited { text-decoration: none; color: white; background: rgba(255,87,34,.7) }
 
@@ -99,3 +99,18 @@ html { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
         .LogInForm label { color: white; line-height: 1.5; }
         .LogInForm input { padding: .5em 1em;  }
             .LogIn { margin: 1em 0; float: left; padding: .5em 2em; }
+
+/*Mesase eroare*/
+.Form { display: block; padding: 1em 0; max-width: 1000px; margin: 0 auto; overflow: auto; }
+.Form h2 { padding: 0 0 1em 0;}
+.Form .Col-3 { width: 30%; float: left;}
+.Form .Col-1 { width: 100%; float: left; margin: 1em 0; }
+    .form-group { padding: .2em 0; }
+    .Form .Register { display: block; width: auto ; float: left; clear: both; margin: 1em 0; }
+    .DOB { width: 300px; float: left; }
+        .DOB .form-group { width: 18%; float: left; margin: 0 5px 0 0; }
+            .DOB select { width: 100%; min-width: 10px; }
+        .DOBNAME { width: 100%; display: block; }
+        .form-group.checkbox .field,.form-group.radio .field { width: auto; float: left; }
+    .SpecialLabel { color: #ff5722; font-size: 12px; font-weight: 700; }
+.Error { font-size: 12px; font-weight: 700; line-height: 1.4; color: #FF0000 }
